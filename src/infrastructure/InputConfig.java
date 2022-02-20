@@ -37,8 +37,13 @@ public class InputConfig {
             e.printStackTrace();
         }
 
-        City result = new City(grid_height, grid_width, number_of_buildings, number_of_antennas, reward, antennas);
-        return result;
+        City berlin = new City(grid_height, grid_width, number_of_buildings, number_of_antennas, reward, antennas);
+        for(Building building: buildings) {
+            int x_coordinate = building.getCoordinates().first_element;
+            int y_coordinate = building.getCoordinates().second_element;
+            berlin.grid[x_coordinate][y_coordinate] = building;
+        }
+        return berlin;
     }
 
     private void parse_antenna_data(BufferedReader br) throws IOException{
