@@ -1,3 +1,7 @@
+package infrastructure;
+
+import infrastructure.Antenna;
+import infrastructure.Building;
 import lombok.*;
 
 import java.util.ArrayList;
