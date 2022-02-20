@@ -6,7 +6,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Set;
+
 import static constraints.Constraints.*;
 
 @Getter
@@ -14,14 +16,14 @@ import static constraints.Constraints.*;
 @ToString
 public class InputConfig {
     private int grid_width, grid_height, number_of_buildings, number_of_antennas, reward;
-    ArrayList<Building> buildings;
-    ArrayList<Antenna> antennas;
-    Set<Pair<Integer,Integer>> unique_building_coordinate_set;
+    ArrayList<Building> buildings = new ArrayList<>();
+    ArrayList<Antenna> antennas = new ArrayList<>();
+    Set<Pair<Integer,Integer>> unique_building_coordinate_set = new HashSet<>();
 
 
 
 
-    public InputConfig parse_ascii_file(String path) {
+    public void parse_ascii_file(String path) {
         InputConfig result = new InputConfig();
 
         try {
@@ -36,8 +38,6 @@ public class InputConfig {
             System.out.println("Error while reading the ascii file " + e.getMessage());
             e.printStackTrace();
         }
-
-        return result;
     }
 
     private void parse_antenna_data(BufferedReader br) throws IOException{
@@ -92,9 +92,6 @@ public class InputConfig {
             } else {
                 throw CustomIOException("invalid number of antennas parameter");
             }
-            parse_number_building_antenna_reward(br);
-            parse_building_data(br);
-            parse_antenna_data(br);
 
             if (is_reward_valid(Integer.parseInt(data[1]))) {
                 this.reward = Integer.parseInt(data[1]);
