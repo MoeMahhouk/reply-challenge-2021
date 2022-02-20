@@ -23,9 +23,7 @@ public class InputConfig {
 
 
 
-    public void parse_ascii_file(String path) {
-        InputConfig result = new InputConfig();
-
+    public City parse_ascii_file(String path) {
         try {
             BufferedReader br = new BufferedReader(new FileReader(path));
             parse_grid_data(br);
@@ -38,6 +36,9 @@ public class InputConfig {
             System.out.println("Error while reading the ascii file " + e.getMessage());
             e.printStackTrace();
         }
+
+        City result = new City(grid_height, grid_width, number_of_buildings, number_of_antennas, reward, antennas);
+        return result;
     }
 
     private void parse_antenna_data(BufferedReader br) throws IOException{

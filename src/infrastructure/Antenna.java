@@ -2,9 +2,7 @@ package infrastructure;
 
 import lombok.*;
 
-@Getter @Setter
-@ToString
-@EqualsAndHashCode
+@Data
 @AllArgsConstructor @NoArgsConstructor
 public class Antenna {
     int range;

@@ -6,16 +6,24 @@ import lombok.*;
 
 import java.util.ArrayList;
 
-@Getter @Setter
-@ToString
-@EqualsAndHashCode
+@Data
 @AllArgsConstructor @NoArgsConstructor
 public class City {
     int height;
-    int weight;
+    int width;
     int number_of_buildings;
     int number_of_antennas;
     int final_reward;
     Building[][] grid;
     ArrayList<Antenna> antennas;
+
+    public City(int height, int width, int number_of_buildings, int number_of_antennas, int final_reward, ArrayList<Antenna> antennas) {
+        this.height = height;
+        this.width = width;
+        this.number_of_buildings = number_of_buildings;
+        this.number_of_antennas = number_of_antennas;
+        this.final_reward = final_reward;
+        this.grid = new Building[height][width];
+        this.antennas = antennas;
+    }
 }
